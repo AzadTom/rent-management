@@ -2,7 +2,7 @@ import { IAllUsers, IUserResponse } from "@/types/types";
 import axios from "axios";
 
 const APIURL =
-  "https://script.google.com/macros/s/AKfycbyCtT00uZnwehVoNWx24GivmMTbbpemuAiYeQ8O85d9KEtk23N7sObXUiAMoYXIRFd8/exec";
+  "https://script.google.com/macros/s/AKfycbyWSUlGsb7kB9paJBZrGbW_gFmtMoJeVlCc0Dn2kMjE2pVzRRaBKcOFUMdL73nYFtWW/exec";
 
 export const fetchAllUsers = async () => {
   try {

@@ -214,7 +214,7 @@ const ShowInput = ({
     <div className="w-full">
       <div className="text-black flex flex-col gap-4">
         <label className="text-[16px]">
-          0{currentIndex + 1}.{question}
+          {currentIndex <=9 ? "0":""}{currentIndex + 1}.{question}
         </label>
         <input
           type="text"
