@@ -1,4 +1,5 @@
 import { IUserInfo, IUserResponse } from "@/types/types";
+import InsertUserInfo from "./InsertUserInfo";
 
 const UserInfo = ({
   userInfo,
@@ -8,10 +9,11 @@ const UserInfo = ({
   username: string;
 }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 mx-4 mt-8 mb-4">
+    <div className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 mx-4 mt-8 mb-4">
       {userInfo.data.map((item) => (
         <InfoCard key={item.serial} {...item} username={username} />
       ))}
+      <InsertUserInfo username={username} />
     </div>
   );
 };
@@ -19,6 +21,7 @@ const UserInfo = ({
 export default UserInfo;
 
 const InfoCard = (props: IUserInfo & { username: string }) => {
+
   const {
     username,
     serial,
@@ -38,6 +41,9 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
   const _totalRent = rent + waterbill + _totalBijliBill + due;
   const _nowDue = _totalRent - payment;
 
+
+ 
+
   return (
     <div>
       <div className="bg-white text-black rounded-xl p-5 mb-4 text-base">
@@ -54,6 +60,9 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
         key={serial}
         className="bg-white p-5 rounded-xl text-black shadow-md max-w-md mx-auto font-medium space-y-1"
       >
+         <p className="flex">
+          <span  className="bg-black p-2 text-white rounded-full px-2 py-1 text-xs">show no.{serial}</span>
+        </p>
         <h2 className="text-center text-2xl font-bold mb-4">
           {username}, {month} {year}
         </h2>
@@ -84,14 +93,18 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
             <span>Total:</span>
             <span>₹{_totalRent}</span>
           </p>
-          <p className="flex justify-between text-green-700">
-            <span>Payment:</span>
-            <span>₹{payment}</span>
-          </p>
-          <p className="flex justify-between text-red-600 font-bold text-lg">
-            <span>Now Due:</span>
-            <span>₹{_nowDue}</span>
-          </p>
+          {payment ? (
+            <p className="flex justify-between text-green-700">
+              <span>Payment:</span>
+              <span>₹{payment}</span>
+            </p>
+          ):null}
+          {payment ? (
+            <p className="flex justify-between text-red-600 font-bold text-lg">
+              <span>Now Due:</span>
+              <span>₹{_nowDue}</span>
+            </p>
+          ):null}
         </div>
       </div>
     </div>

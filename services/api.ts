@@ -2,7 +2,7 @@ import { IAllUsers, IUserResponse } from "@/types/types";
 import axios from "axios";
 
 const APIURL =
-  "https://script.google.com/macros/s/AKfycbx24pUrZiPhBby83pjKEvPqSIeF0iKjMnTsqte-7h0paS_tdnD8-AL5a2RieBiWpEF4/exec";
+  "https://script.google.com/macros/s/AKfycbyCtT00uZnwehVoNWx24GivmMTbbpemuAiYeQ8O85d9KEtk23N7sObXUiAMoYXIRFd8/exec";
 
 export const fetchAllUsers = async () => {
   try {
@@ -43,12 +43,11 @@ export const sendToGoogleSheet = async (sheetName: string, data: RentData) => {
   };
 
   try {
-    const response = await axios.post(APIURL, payload, {
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const response = await fetch(APIURL, {
+      method: "POST",
+      body: JSON.stringify(payload),
     });
-    return response.data;
+    return response;
   } catch (error) {
     console.log(error);
   }
