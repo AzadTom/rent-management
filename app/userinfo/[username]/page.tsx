@@ -14,7 +14,7 @@ const page = async ({ params }: Props) => {
   const userInfo = await getAllDataByUser(_username);
   return (
     <main>
-      <h1 className="text-2xl font-bold mx-4 mt-4">{_username}</h1>
+      <h1 className="text-2xl font-bold mx-4 mt-4 uppercase">{_username}</h1>
       {userInfo && <UserInfo userInfo={userInfo} username={_username} />}
     </main>
   );

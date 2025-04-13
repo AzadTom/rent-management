@@ -2,7 +2,7 @@ import { IAllUsers, IUserResponse } from "@/types/types";
 import axios from "axios";
 
 const APIURL =
-  "https://script.google.com/macros/s/AKfycbyWSUlGsb7kB9paJBZrGbW_gFmtMoJeVlCc0Dn2kMjE2pVzRRaBKcOFUMdL73nYFtWW/exec";
+  "https://script.google.com/macros/s/AKfycbyv1CzG3V0oxzRvYja1DnygXHlgfn6EnrF6MSheQGSUHbEzzOoHpqnORkPR3ef76QvQ/exec";
 
 export const fetchAllUsers = async () => {
   try {
@@ -37,6 +37,30 @@ type RentData = {
 };
 
 export const sendToGoogleSheet = async (sheetName: string, data: RentData) => {
+  const payload = {
+    sheetName,
+    data,
+  };
+
+  try {
+    const response = await fetch(APIURL, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+type DeleteRow={
+
+  serial:number;
+  delete:boolean;
+}
+
+
+export const deleteFromGoogleSheet = async (sheetName: string, data:DeleteRow) => {
   const payload = {
     sheetName,
     data,

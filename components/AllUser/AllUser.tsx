@@ -33,7 +33,7 @@ const UserCard = ({ id, name }: { id: number; name: string }) => {
       </h2>
       <Link href={"/userinfo/" + name.split(" ").join("-").toLowerCase()}>
         <button
-          className="border border-[var(--primaryColor)] cursor-pointer rounded-full text-[var(--primaryShadowColor)] px-12 py-6  uppercase
+          className="border border-[var(--primaryColor))] cursor-pointer rounded-full text-[var(--primaryColor))] px-12 py-4  capitalize
           text-[16px] font-semibold"
         >
           View Info

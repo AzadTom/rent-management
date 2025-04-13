@@ -15,10 +15,10 @@ const InsertUserInfo = ({ username }: { username: string }) => {
       {openDialog && (
         <ShowModel
           bg="rgba(0,0,0,0.1)"
-          onClick={() => setOpenDialog(true)}
+          onClick={() => setOpenDialog(false)}
           show={true}
         >
-          <div className="w-[320px]">
+          <div className="w-[320px]" onClick={(e)=> e.stopPropagation()}>
             <FormContainer
               username={username}
               handleDialog={() => setOpenDialog(false)}
@@ -28,7 +28,7 @@ const InsertUserInfo = ({ username }: { username: string }) => {
       )}
       <CiCirclePlus
         size={48}
-        className="drop-shadow-lg drop-shadow-white"
+        className="drop-shadow-lg drop-shadow-black"
         onClick={() => setOpenDialog((prev) => !prev)}
       />
     </div>
@@ -206,6 +206,14 @@ const ShowInput = ({
   const [input, setInput] = useState<string>(
     responseQuestion ? (responseQuestion === "0" ? "" : responseQuestion) : "",
   );
+
+  const handleInputRef = (element:HTMLInputElement | null)=>{
+    if(element){
+     element.focus();
+    }
+ }
+
+
   return (
     <div className="w-full">
       <div className="text-black flex flex-col gap-4">
@@ -215,6 +223,7 @@ const ShowInput = ({
         <input
           type="text"
           required
+          ref={handleInputRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="w-full outline-none  px-4 py-2 rounded-xl border border-slate-400"
@@ -222,7 +231,7 @@ const ShowInput = ({
         />
       </div>
       {isloading ? (
-        <div className="w-full flex justify-center items-center  bg-teal-600 rounded-full px-4 py-2 mt-4">
+        <div className="w-full flex justify-center items-center  bg-black rounded-full px-4 py-2 mt-4">
           <div
             className="animate-spin  size-6 border-3 border-current border-t-transparent text-white rounded-full"
             role="status"
@@ -240,7 +249,7 @@ const ShowInput = ({
           <button
             disabled={input ? false : true}
             onClick={() => handleResponse(input)}
-            className={`flex-1 cursor-pointer font-semibold w-full text-white rounded-full px-4 py-2 ${input ? "bg-teal-600" : "bg-[#c4c4c4]"}`}
+            className={`flex-1 cursor-pointer font-semibold w-full text-white rounded-full px-4 py-2 ${input ? "bg-black" : "bg-[#c4c4c4]"}`}
           >
             {isLast ? "SUBMIT" : "NEXT"}
           </button>

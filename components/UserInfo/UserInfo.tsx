@@ -1,6 +1,7 @@
 import { IUserInfo, IUserResponse } from "@/types/types";
 import InsertUserInfo from "./InsertUserInfo";
 import UpdateUserInfo from "./UpdateUserInfo";
+import UserInfoWrapper from "./UserInfoWrapper";
 
 
 const UserInfo = ({
@@ -58,6 +59,7 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
           <span className="font-bold">{current_month_bijli_unit}</span>
         </p>
       </div>
+      <UserInfoWrapper serial={serial} username={username}>
       <div
         key={serial}
         className="bg-white p-5 rounded-xl text-black shadow-md max-w-md mx-auto font-medium space-y-1"
@@ -110,6 +112,7 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
           ):null}
         </div>
       </div>
+      </UserInfoWrapper>
     </div>
   );
 };
