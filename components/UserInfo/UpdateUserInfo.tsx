@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FiEdit } from "react-icons/fi";
 import ShowModel from '../Dialog/ShowModel';
 import { IUserInfo } from '@/types/types';
-import { getAllQuestionsInUpdate, getMonthandYear } from '@/utils/utils';
+import { getAllQuestionsInUpdate} from '@/utils/utils';
 import { sendToGoogleSheet } from '@/services/api';
 import { useRouter } from 'next/navigation';
 import { MdOutlineArrowBackIos } from 'react-icons/md';
@@ -52,7 +52,7 @@ const FormContainer = ({
 
   const router = useRouter();
   const _allquestions = getAllQuestionsInUpdate();
-  const { month, year } = getMonthandYear();
+  // const { month, year } = getMonthandYear();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isloading, setIsloading] = useState(false);
   const [userInfo, setUserInfo] = useState({
