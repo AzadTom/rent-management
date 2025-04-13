@@ -15,9 +15,6 @@ const UserInfoWrapper = ({ children, serial, username }: { serial: number, child
       setIsOpen(true);
     },
     {
-      onStart: (event) => console.log("Press started"),
-      onFinish: (event) => console.log("Press Finished"),
-      onCancel: (event) => console.log("Press cancelled"),
       threshold: 500,
     }
   );
