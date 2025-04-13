@@ -13,6 +13,23 @@ export const getAllQuestions = (): string[] => {
   return list;
 };
 
+export const getAllQuestionsInUpdate = (): string[] => {
+  const list: string[] = [
+    "Please tell me Unique Serial no.?",
+    "Tell me about payment?",
+    "What's rent?",
+    "What's water Bill",
+    "What's previos month bijli unit?",
+    "What's current month bijli unit?",
+    "What's bijli unit price?",
+    "Tell me about due rent?",
+    "What's month?",
+    "What's year?"
+  ];
+
+  return list;
+};
+
 export const getMonthandYear = () => {
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });

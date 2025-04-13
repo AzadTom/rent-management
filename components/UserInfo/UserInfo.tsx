@@ -1,5 +1,7 @@
 import { IUserInfo, IUserResponse } from "@/types/types";
 import InsertUserInfo from "./InsertUserInfo";
+import UpdateUserInfo from "./UpdateUserInfo";
+
 
 const UserInfo = ({
   userInfo,
@@ -60,8 +62,9 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
         key={serial}
         className="bg-white p-5 rounded-xl text-black shadow-md max-w-md mx-auto font-medium space-y-1"
       >
-         <p className="flex">
+         <p className="flex justify-between">
           <span  className="bg-black p-2 text-white rounded-full px-2 py-1 text-xs">show no.{serial}</span>
+          <span><UpdateUserInfo {...props}/></span>
         </p>
         <h2 className="text-center text-2xl font-bold mb-4">
           {username}, {month} {year}

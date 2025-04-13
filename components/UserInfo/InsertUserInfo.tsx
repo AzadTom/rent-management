@@ -171,7 +171,7 @@ const FormContainer = ({
       <div className="relative flex justify-center items-center mb-4">
         <span
           className="absolute left-0"
-          onClick={() => setCurrentIndex((prev) => prev - 1)}
+          onClick={() => setCurrentIndex((prev) => prev === 0 ? prev:prev-1)}
         >
           <MdOutlineArrowBackIos />
         </span>
@@ -236,7 +236,7 @@ const ShowInput = ({
       ) : (
         <div className="mt-4 flex gap-2 justify-between items-center">
           <button
-            onClick={() => handleResponse("0")}
+            onClick={() => handleResponse(input)}
             className="flex-1 border border-[#c4c4c4] rounded-full px-4 py-2"
           >
             SKIP
