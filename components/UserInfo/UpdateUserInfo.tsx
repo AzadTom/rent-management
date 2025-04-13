@@ -95,11 +95,8 @@ const FormContainer = ({
         })
         .catch((err) => {
           console.log(err);
-        })
-        .finally(() => {
-          console.log(userInfo);
-          console.log(input);
         });
+        
     } else {
       if (currentIndex === 0) {
         setUserInfo((prev) => ({

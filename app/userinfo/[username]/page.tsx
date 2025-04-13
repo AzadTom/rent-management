@@ -2,11 +2,11 @@ import UserInfo from "@/components/UserInfo/UserInfo";
 import { getAllDataByUser } from "@/services/api";
 
 type Props = {
-  params: { username: string };
+  params: Promise<{ username: string }>;
 };
 
 const page = async ({ params }: Props) => {
-  const { username } = params;
+  const { username } = await params;
   const _username = username
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
