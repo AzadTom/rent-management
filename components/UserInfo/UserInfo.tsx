@@ -39,13 +39,13 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
     year,
   } = props;
 
-  const _bijli_unit = current_month_bijli_unit - previous_month_bijli_unit;
-  const _totalBijliBill = _bijli_unit * bijli_unit_price;
-  const _totalRent = rent + waterbill + _totalBijliBill + due;
-  const _nowDue = _totalRent - payment;
+  const _bijli_unit = Number(current_month_bijli_unit) - Number(previous_month_bijli_unit);
+  const _totalBijliBill = Number(_bijli_unit) * Number(bijli_unit_price);
+  const _totalRent = Number(rent) + Number(waterbill) + Number(_totalBijliBill) + Number(due);
+  const _nowDue = Number(_totalRent) - Number(payment);
 
 
- 
+
 
   return (
     <div>
@@ -60,58 +60,64 @@ const InfoCard = (props: IUserInfo & { username: string }) => {
         </p>
       </div>
       <UserInfoWrapper serial={serial} username={username}>
-      <div
-        key={serial}
-        className="bg-white p-5 rounded-xl text-black shadow-md max-w-md mx-auto font-medium space-y-1"
-      >
-         <p className="flex justify-between">
-          <span  className="bg-black p-2 text-white rounded-full px-2 py-1 text-xs">show no.{serial}</span>
-          <span><UpdateUserInfo {...props}/></span>
-        </p>
-        <h2 className="text-center text-2xl font-bold mb-4">
-          {username}, {month} {year}
-        </h2>
+        <div
+          key={serial}
+          className="bg-white p-5 rounded-xl text-black shadow-md max-w-md mx-auto font-medium space-y-1"
+        >
+          <p className="flex justify-between">
+            <span className="bg-black p-2 text-white rounded-full px-2 py-1 text-xs">show no.{serial}</span>
+            <span><UpdateUserInfo {...props} /></span>
+          </p>
+          <h2 className="text-center text-2xl font-bold mb-4">
+            {username}, {month} {year}
+          </h2>
 
-        <div className="text-base space-y-1">
-          <p className="flex justify-between">
-            <span>Rent:</span>
-            <span>₹{rent}</span>
-          </p>
-          <p className="flex justify-between">
-            <span>Water Bill:</span>
-            <span>₹{waterbill}</span>
-          </p>
-          <p className="flex justify-between">
-            <span>Bijli Unit:</span>
-            <span>
-              {_bijli_unit} × ₹{bijli_unit_price} = ₹{_totalBijliBill}
-            </span>
-          </p>
-          <p className="flex justify-between">
-            <span>Previous Due:</span>
-            <span>₹{due}</span>
-          </p>
-
-          <hr className="my-2" />
-
-          <p className="flex justify-between font-semibold text-lg">
-            <span>Total:</span>
-            <span>₹{_totalRent}</span>
-          </p>
-          {payment ? (
-            <p className="flex justify-between text-green-700">
-              <span>Payment:</span>
-              <span>₹{payment}</span>
+          <div className="text-base space-y-1">
+            <p className="flex justify-between">
+              <span>Rent:</span>
+              <span>₹{rent}</span>
             </p>
-          ):null}
-          {payment ? (
-            <p className="flex justify-between text-red-600 font-bold text-lg">
-              <span>Now Due:</span>
-              <span>₹{_nowDue}</span>
+            {waterbill ? (
+              <p className="flex justify-between">
+                <span>Water Bill:</span>
+                <span>₹{waterbill}</span>
+              </p>
+            ) : (null)}
+            {bijli_unit_price ? (
+              <p className="flex justify-between">
+                <span>Bijli Unit:</span>
+                <span>
+                  {_bijli_unit} × ₹{bijli_unit_price} = ₹{_totalBijliBill}
+                </span>
+              </p>
+            ) : (null)}
+            {due ? (
+              <p className="flex justify-between">
+                <span>Previous Due:</span>
+                <span>₹{due}</span>
+              </p>
+            ) : (null)}
+
+            <hr className="my-2" />
+
+            <p className="flex justify-between font-semibold text-lg">
+              <span>Total:</span>
+              <span>₹{_totalRent}</span>
             </p>
-          ):null}
+            {payment ? (
+              <p className="flex justify-between text-green-700">
+                <span>Payment:</span>
+                <span>₹{payment}</span>
+              </p>
+            ) : null}
+            {payment ? (
+              <p className="flex justify-between text-red-600 font-bold text-lg">
+                <span>Now Due:</span>
+                <span>₹{_nowDue}</span>
+              </p>
+            ) : null}
+          </div>
         </div>
-      </div>
       </UserInfoWrapper>
     </div>
   );
