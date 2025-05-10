@@ -1,3 +1,4 @@
+import Back from "@/components/Back/Back";
 import UserInfo from "@/components/UserInfo/UserInfo";
 import { getAllDataByUser } from "@/services/api";
 
@@ -14,7 +15,7 @@ const page = async ({ params }: Props) => {
   const userInfo = await getAllDataByUser(_username);
   return (
     <main>
-      <h1 className="text-2xl font-bold mx-4 mt-4 uppercase">{_username}</h1>
+      <Back content={_username} />
       {userInfo && <UserInfo userInfo={userInfo} username={_username} />}
     </main>
   );
