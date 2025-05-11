@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rent Management",
+  icons:'/record-rec.svg',
   description: "this is rent management web app which you can use to record your tenant rent info with google spreadsheet.",
 };
 
